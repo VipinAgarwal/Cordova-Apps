@@ -14,90 +14,101 @@
     }
 </style>
 <div>
-    <div>
+    <div ng-show="true">
         <ion-slide-box show-pager="true">
             <ion-slide>
                 <div class="swiper-slide">
-                    Slide No 1
+                    Section no: 1 {{tSBInfo.box1.data.grossOptions}}
                 </div>
                 <div class="swiper-slide">
 
-                    <ion-radio ng-model="choice6" ng-value="'A'">Top</ion-radio>
-                    <ion-radio ng-model="choice6" ng-value="'B'">Bottom</ion-radio>
-                    <ion-radio ng-model="choice6" ng-value="'C'">None</ion-radio>
+                   <ion-radio ng-repeat="item in tSBInfo.box1.grossOptionsList"
+                       ng-value="item.value"
+                       ng-model="tSBInfo.box1.data.grossOptions"
+                       ng-change="updateGrossOptions(item)"
+                       name="radio1">
+              {{ item.text }}
+            </ion-radio>
+                </div>
+                <br/>
+                <br/>
+            </ion-slide>
+                       <ion-slide>
+                <div class="swiper-slide">
+                    Section no: 2 {{tSBInfo.box2.data.grossOptions}}
+                </div>
+                <div class="swiper-slide">
+
+                   <ion-radio ng-repeat="item in tSBInfo.box2.grossOptionsList"
+                       ng-value="item.value"
+                       ng-model="tSBInfo.box2.data.grossOptions"
+                       ng-change="updateGrossOptions(item)"
+                       name="radio1">
+              {{ item.text }}
+            </ion-radio>
                 </div>
                 <br/>
                 <br/>
             </ion-slide>
             <ion-slide>
                 <div class="swiper-slide">
-                    Slide No 2
+                    Section no: 3
                 </div>
                 <div class="swiper-slide">
-
-                    <ion-radio ng-model="choice1" ng-value="'A'">Top</ion-radio>
-                    <ion-radio ng-model="choice1" ng-value="'B'">Bottom</ion-radio>
-                    <ion-radio ng-model="choice1" ng-value="'C'">None</ion-radio>
-                </div>
-            </ion-slide>
-            <ion-slide>
-                <div class="swiper-slide">
-                    Slide No 3
-                </div>
-                <div class="swiper-slide">
-                    <ion-radio ng-model="choice2" ng-value="'A'">Top</ion-radio>
-                    <ion-radio ng-model="choice2" ng-value="'B'">Bottom</ion-radio>
-                    <ion-radio ng-model="choice2" ng-value="'C'">None</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box3" ng-value="'A'">Top</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box3" ng-value="'B'">Bottom</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box3" ng-value="'C'">None</ion-radio>
                 </div>
             </ion-slide>
             <ion-slide>
                 <div class="swiper-slide">
-                    Slide No 4
+                    Section no: 4
                 </div>
                 <div class="swiper-slide">
-                    <ion-radio ng-model="choice3" ng-value="'A'">Top</ion-radio>
-                    <ion-radio ng-model="choice3" ng-value="'B'">Bottom</ion-radio>
-                    <ion-radio ng-model="choice3" ng-value="'C'">None</ion-radio>
-                </div>
-            </ion-slide>
-            <ion-slide>
-                <div class="swiper-slide">
-                    Slide No 5
-                </div>
-                <div class="swiper-slide">
-                    <ion-radio ng-model="choice4" ng-value="'A'">Top</ion-radio>
-                    <ion-radio ng-model="choice4" ng-value="'B'">Bottom</ion-radio>
-                    <ion-radio ng-model="choice4" ng-value="'C'">None</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box4" ng-value="'A'">Top</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box4" ng-value="'B'">Bottom</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box4" ng-value="'C'">None</ion-radio>
                 </div>
             </ion-slide>
             <ion-slide>
                 <div class="swiper-slide">
-                    Slide No 6
+                    Section no: 5
+                    <br/>
                 </div>
                 <div class="swiper-slide">
-                    <ion-radio ng-model="choice5" ng-value="'A'">Top</ion-radio>
-                    <ion-radio ng-model="choice5" ng-value="'B'">Bottom</ion-radio>
-                    <ion-radio ng-model="choice5" ng-value="'C'">None</ion-radio>
-                </div>
-            </ion-slide>
-            <ion-slide>
-                <div class="swiper-slide">
-                    Slide No 7
-                </div>
-                <div class="swiper-slide">
-                    <ion-radio ng-model="choice5" ng-value="'A'">Top</ion-radio>
-                    <ion-radio ng-model="choice5" ng-value="'B'">Bottom</ion-radio>
-                    <ion-radio ng-model="choice5" ng-value="'C'">None</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box5" ng-value="'A'">Top</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box5" ng-value="'B'">Bottom</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box5" ng-value="'C'">None</ion-radio>
                 </div>
             </ion-slide>
             <ion-slide>
                 <div class="swiper-slide">
-                    Slide No 8
+                    Section no: 6
                 </div>
                 <div class="swiper-slide">
-                    <ion-radio ng-model="choice5" ng-value="'A'">Top</ion-radio>
-                    <ion-radio ng-model="choice5" ng-value="'B'">Bottom</ion-radio>
-                    <ion-radio ng-model="choice5" ng-value="'C'">None</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box6" ng-value="'A'">Top</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box6" ng-value="'B'">Bottom</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box6" ng-value="'C'">None</ion-radio>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="swiper-slide">
+                    Section no: 7
+                </div>
+                <div class="swiper-slide">
+                    <ion-radio ng-model="tSBInfo.box7" ng-value="'A'">Top</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box7" ng-value="'B'">Bottom</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box7" ng-value="'C'">None</ion-radio>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="swiper-slide">
+                    Section no: 8
+                </div>
+                <div class="swiper-slide">
+                    <ion-radio ng-model="tSBInfo.box8" ng-value="'A'">Top</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box8" ng-value="'B'">Bottom</ion-radio>
+                    <ion-radio ng-model="tSBInfo.box8" ng-value="'C'">None</ion-radio>
                 </div>
             </ion-slide>
 
