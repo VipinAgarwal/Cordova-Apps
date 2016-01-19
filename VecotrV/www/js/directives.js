@@ -4,7 +4,7 @@ angular.module('app.directives', [])
 
 	return{
         scope: {
-      tSBInfo: '=info'
+      row: '=info'
     },
 		templateUrl:'templates/tristatebutton.html'
 	};

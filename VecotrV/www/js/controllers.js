@@ -1,44 +1,87 @@
 /* global i */
 angular.module('app.controllers', [])
-  
-.controller('loginCtrl', function($scope) {
 
-})
-   
-.controller('addPatientCtrl', function($scope) {
+    .controller('loginCtrl', function ($scope) {
 
-})
-   
-.controller('selectTestCtrl', function($scope) {
+    })
 
-})
-   
-.controller('selectConditionCtrl', function($scope) {
+    .controller('addPatientCtrl', function ($scope) {
 
-})
-   
-.controller('searchForPatientCtrl', function($scope) {
+    })
 
-})
+    .controller('selectTestCtrl', function ($scope) {
 
-.controller('tristateCtrl', function($scope) {
-	$scope.color = {
-        name: 'top'
-      };
+    })
 
-})
-.controller('eTestCtrl', function($scope) {
-   $scope.row1 ={};
-          for(i= 1; i<8; i++){
-              var box = "box" + i;
-              $scope.row1[box] = {};
-              $scope.row1[box].grossOptionsList = [{text:'Top', value:'T'+i}, {text:'Bottom', value:'B'+i}, {text:'None', value:'N'+i}];
-          $scope.row1[box].data = {};
-      	$scope.row1[box].data.grossOptions = 'B'+i;
-          }
-   // $scope.row1 = {section: "test section for 1", box1:"boxA1", box2:"boxA2",box3:"boxA3",box4:"boxA4",box5:"boxA5",box6:"boxA6",box7:"boxA7",box8:"boxA1"  };
-    $scope.row2 = {section: "test section for 2", box1:"boxB1", box2:"boxB2",box3:"boxB3",box4:"boxB4",box5:"boxB5",box6:"boxB6",box7:"boxB7",box8:"boxB8" };
-    $scope.row3 = {section: "test section for 3", box1:"boxC1", box2:"boxC2",box3:"boxC3",box4:"boxC4",box5:"boxC5",box6:"boxC6",box7:"boxC7",box8:"boxC8"  };
-    $scope.row4 = {section: "test section for 4", box1:"boxD1", box2:"boxD2",box3:"boxD3",box4:"boxD4",box5:"boxD5",box6:"boxD6",box7:"boxD7",box8:"boxD8"  };
-})
+    .controller('selectConditionCtrl', function ($scope) {
+
+    })
+
+    .controller('searchForPatientCtrl', function ($scope) {
+
+    })
+
+    .controller('tristateCtrl', function ($scope) {
+        $scope.color = {
+            name: 'top'
+        };
+
+    })
+    .controller('eTestCtrl', function ($scope) {
+
+        $scope.A = {};
+        $scope.A.data = [];
+        $scope.A.section = "A";
+        for (i = 0; i < 8; i++) {
+            $scope.A.data[i] = {};
+            $scope.A.data[i].selectoptions = [{ id: 'T', label: "T" }, { id: 'B', label: "B" }, { id: '-', label: "-" }];
+            $scope.A.data[i].boxno = i + 1;
+            $scope.A.data[i].selected = $scope.A.data[i].selectoptions[2];
+        }
+
+        $scope.B = {};
+        $scope.B.data = [];
+        $scope.B.section = "B";
+        for (i = 0; i < 8; i++) {
+            $scope.B.data[i] = {};
+            $scope.B.data[i].selectoptions = [{ id: 'T' + i, label: "T" }, { id: 'B' + i, label: "B" }, { id: '-' + i, label: "-" }];
+            $scope.B.data[i].boxno = i + 1;
+            $scope.B.data[i].selected = $scope.B.data[i].selectoptions[2];
+        }
+
+        $scope.C = {};
+        $scope.C.data = [];
+        $scope.C.section = "C";
+        for (i = 0; i < 8; i++) {
+            $scope.C.data[i] = {};
+            $scope.C.data[i].selectoptions = [{ id: 'T' + i, label: "T" }, { id: 'B' + i, label: "B" }, { id: '-' + i, label: "-" }];
+            $scope.C.data[i].boxno = i + 1;
+            $scope.C.data[i].selected = $scope.C.data[i].selectoptions[1];
+        }
+
+        $scope.D = {};
+        $scope.D.data = [];
+        $scope.D.section = "D";
+        for (i = 0; i < 8; i++) {
+            $scope.D.data[i] = {};
+            $scope.D.data[i].selectoptions = [{ id: 'T' + i, label: "T" }, { id: 'B' + i, label: "B" }, { id: '-' + i, label: "-" }];
+            $scope.D.data[i].boxno = i + 1;
+            $scope.D.data[i].selected = $scope.D.data[i].selectoptions[0];
+        }
+        var getscore = function (row) {
+            var score = 0;
+            for (i = 0; i < 8; i++) {
+                if (row.data[i].selected.label == "T" || row.data[i].selected.label == "B")
+                    score = score + 1;
+            }
+            return score;
+        }
+        $scope.genrateGraph = function () {
+            $scope.right = {};
+            $scope.right.A = getscore($scope.A);
+            $scope.right.B = getscore($scope.B);
+            $scope.right.C = getscore($scope.C);
+            $scope.right.D = getscore($scope.D);
+        }
+    })
  
