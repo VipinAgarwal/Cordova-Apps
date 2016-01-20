@@ -34,7 +34,7 @@ angular.module('app.controllers', [])
         $scope.A.section = "A";
         for (i = 0; i < 8; i++) {
             $scope.A.data[i] = {};
-            $scope.A.data[i].selectoptions = [{ id: 'T', label: "T" }, { id: 'B', label: "B" }, { id: '-', label: "-" }];
+            $scope.A.data[i].selectoptions = [{ id: 'T', label: "T" }, { id: 'B', label: "B" }, { id: 'None', label: "None" }];
             $scope.A.data[i].boxno = i + 1;
             $scope.A.data[i].selected = $scope.A.data[i].selectoptions[2];
         }
@@ -44,7 +44,7 @@ angular.module('app.controllers', [])
         $scope.B.section = "B";
         for (i = 0; i < 8; i++) {
             $scope.B.data[i] = {};
-            $scope.B.data[i].selectoptions = [{ id: 'T' + i, label: "T" }, { id: 'B' + i, label: "B" }, { id: '-' + i, label: "-" }];
+            $scope.B.data[i].selectoptions = [{ id: 'T' + i, label: "T" }, { id: 'B' + i, label: "B" }, { id: 'None' + i, label: "None" }];
             $scope.B.data[i].boxno = i + 1;
             $scope.B.data[i].selected = $scope.B.data[i].selectoptions[2];
         }
@@ -54,7 +54,7 @@ angular.module('app.controllers', [])
         $scope.C.section = "C";
         for (i = 0; i < 8; i++) {
             $scope.C.data[i] = {};
-            $scope.C.data[i].selectoptions = [{ id: 'T' + i, label: "T" }, { id: 'B' + i, label: "B" }, { id: '-' + i, label: "-" }];
+            $scope.C.data[i].selectoptions = [{ id: 'T' + i, label: "T" }, { id: 'B' + i, label: "B" }, { id: 'None' + i, label: "None" }];
             $scope.C.data[i].boxno = i + 1;
             $scope.C.data[i].selected = $scope.C.data[i].selectoptions[1];
         }
@@ -64,7 +64,7 @@ angular.module('app.controllers', [])
         $scope.D.section = "D";
         for (i = 0; i < 8; i++) {
             $scope.D.data[i] = {};
-            $scope.D.data[i].selectoptions = [{ id: 'T' + i, label: "T" }, { id: 'B' + i, label: "B" }, { id: '-' + i, label: "-" }];
+            $scope.D.data[i].selectoptions = [{ id: 'T' + i, label: "T" }, { id: 'B' + i, label: "B" }, { id: 'None' + i, label: "None" }];
             $scope.D.data[i].boxno = i + 1;
             $scope.D.data[i].selected = $scope.D.data[i].selectoptions[0];
         }
