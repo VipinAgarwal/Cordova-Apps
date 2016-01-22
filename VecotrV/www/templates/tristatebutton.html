@@ -9,13 +9,17 @@
             {{row.section}}
         </div>
     </div>
+
     <div class="col" ng-repeat="d in row.data">
-        <label class="item item-input item-select">
+        <!--<label class="item item-input item-select">
             <div class="input-label">
                 {{d.boxno}}
             </div>
             <select ng-model="d.selected" ng-options="opt as opt.label for opt in d.selectoptions">
             </select>
-        </label>
+        </label>-->
+            {{d.boxno}}
+        <select ng-model="d.selected" ng-options="opt as opt.label for opt in d.selectoptions">
+        </select>
     </div>
 </div>
