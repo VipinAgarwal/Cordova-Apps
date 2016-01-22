@@ -1,10 +1,10 @@
 <ion-view title="Select Test">
     <ion-content padding="true" class="has-header">
         <form class="list">
-            <a href="#/page4" class="button button-stable button-block ">S Test</a>
-            <a href="#/page4" class="button button-stable button-block ">E Test</a>
-            <a href="#/page4" class="button button-stable button-block ">SLanC Test</a>
-            <a href="#/page4" class="button button-stable button-block ">EChrt1 Test</a>
+            <button id="s" ng-click="selectTest($event)" class="button button-positive button-large button-block" ng-disabled="true">S Test</button>
+            <button id="e" ng-click="selectTest($event)" class="button button-positive button-large button-block ">E Test</button>
+            <button id="slanc" ng-click="selectTest($event)" class="button button-positive button-large button-block " ng-disabled="true">SLanC Test</button>
+            <button id="echar1" ng-click="selectTest($event)" href="#/page4" class="button button-positive button-large button-block ">EChrt1 Test</button>
         </form>
     </ion-content>
 </ion-view>

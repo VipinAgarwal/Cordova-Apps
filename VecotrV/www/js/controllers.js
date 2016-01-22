@@ -1,12 +1,12 @@
 /* global i */
 angular.module('app.controllers', [])
     .controller('addPatientCtrl', function ($scope, $state) {
-         $scope.addpatient = {
+        $scope.addpatient = {
             fName: '',
             lNam: '',
-            gender:'',
-            dob:'',
-            mrn:''
+            gender: '',
+            dob: '',
+            mrn: ''
         };
 
         $scope.addPatient = function (form) {
@@ -17,7 +17,16 @@ angular.module('app.controllers', [])
 
     })
 
-    .controller('selectTestCtrl', function ($scope) {
+    .controller('selectTestCtrl', function ($scope, $state) {
+        $scope.selectTest = function(event){
+            if(event.target.id == "e" || event.target.id =="echar1"){
+                $state.go('eTest');
+            }
+        }
+
+    })
+
+    .controller('homeCtrl', function ($scope) {
 
     })
 
