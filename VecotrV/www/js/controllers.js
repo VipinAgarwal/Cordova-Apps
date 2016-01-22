@@ -93,7 +93,7 @@ angular.module('app.controllers', [])
             $scope.C.data[i] = {};
             $scope.C.data[i].selectoptions = [{ id: 'T' + i, label: "Top" }, { id: 'B' + i, label: "Bottom" }, { id: 'None' + i, label: "None" }];
             $scope.C.data[i].boxno = i + 1;
-            $scope.C.data[i].selected = $scope.C.data[i].selectoptions[1];
+            $scope.C.data[i].selected = $scope.C.data[i].selectoptions[2];
         }
 
         $scope.D = {};
@@ -103,7 +103,7 @@ angular.module('app.controllers', [])
             $scope.D.data[i] = {};
             $scope.D.data[i].selectoptions = [{ id: 'T' + i, label: "Top" }, { id: 'B' + i, label: "Bottom" }, { id: 'None' + i, label: "None" }];
             $scope.D.data[i].boxno = i + 1;
-            $scope.D.data[i].selected = $scope.D.data[i].selectoptions[0];
+            $scope.D.data[i].selected = $scope.D.data[i].selectoptions[2];
         }
         var getscore = function (row) {
             var score = 0;
@@ -125,24 +125,42 @@ angular.module('app.controllers', [])
         }
     })
  .controller('egraphCntrl', function ($scope) {
+    // var eresult = $scope.$parent.patient.etestResults;
+     //test data.. 
+     var eresult = {A:0,B:0,C:0,D:0};   
+     var A = [.70,1,1.17,1.34,1.49,1.63,1.78,1.93,2.08];
+     var B= [.91,1.21,1.38,1.55,1.7,1.84,1.99,2.14,2.29];
+     var C = [.61,.91,1.08,1.25,1.4,1.54,1.69,1.84,1.99];
+     var D = [.17,.47,.64,.81,.96,1.1,1.25,1.4,1.55];
+     
     $scope.data = {
       
-      labels: ["A","B","C","D"],
-      datasets: [ {
-        label: "My Third dataset",
+      labels: [3,6,12,18],
+      datasets: [
+         {
+        label: "My Last dataset",
         
-        fillColor: "rgba(151,187,205,0.2)",
+        fillColor: "rgb(186,215,224)",
         data: [2.08, 2.29, 1.99, 1.55]
       },{
+        label: "My Fourth dataset",
+        fillColor: "rgb(136,174,186)",
+        data: [1.78, 1.99, 1.69, 1.25]
+      },{
+        label: "My Third dataset",
+        fillColor: "rgb(74,126,143)",
+        data: [1.63, 1.84, 1.54, 1.1]
+      },{
         label: "My Second dataset",
-        fillColor: "rgb(224,255,255)",
-        data: [1.49, 1.7, 1.40, .96]
+        fillColor: "rgb(255,255,255)",
+        data: [1.34, 1.55, 1.25, .81]
       },
       {
         label: "My First dataset",
         fillColor: "rgb(255,255,255)",
         data: [1, 1.21, .91, .47]
       }
+      
       ]
     };
     $scope.options = {
@@ -150,22 +168,24 @@ angular.module('app.controllers', [])
       scaleShowVerticalLines:true,
       pointDot : false,
       bezierCurve: false,
-      scaleShowGridLines : false,
-      showTooltips: false,
+      scaleShowGridLines : true,
+      showTooltips: true,
        datasetFill : true,
+       maintainAspectRatio: true,
+    responsive: true
     };
      $scope.data1 = {
       
-      labels: ["A","B","C","D"],
+      labels: [3,6,12,18],
      datasets: [ {
         label: "My Third dataset",
-        
-        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgb(186,215,224)",
         data: [2.08, 2.29, 1.99, 1.55]
-      },{
-        label: "My Second dataset",
-        strokeColor: "rgba(123,120,220,1)",
-        data: [1.69, 1.8, 1.60, 1.26]
+      },
+      {
+        label: "My Result dataset",
+        strokeColor: "rgb(255,0,0)",
+        data: [A[eresult.A], B[eresult.B], C[eresult.C], D[eresult.D]]
       },
       {
         label: "My First dataset",
@@ -178,13 +198,18 @@ angular.module('app.controllers', [])
     };
       $scope.options1 = {
       showScale:true,
-      scaleShowVerticalLines:false,
+      scaleShowVerticalLines:true,
       pointDot : false,
       bezierCurve: false,
       scaleShowGridLines : false,
       showTooltips: false,
        datasetFill : false,
+       maintainAspectRatio: true,
+    responsive: true
     };
+    
+   // mychart.Line(data,{scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 1, scaleSteps: 30});
+
      //$scope.patient = $scope.$parent.patient;
      //$scope.patient.name = $scope.patient.fName + " " + $scope.patient.lName;
    //  var results = $scope.patient.etestResults;

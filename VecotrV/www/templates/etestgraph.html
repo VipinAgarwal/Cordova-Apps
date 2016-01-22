@@ -1,14 +1,12 @@
 <style>
     #w {
-        height: 800px;
-        width: 800px;
+       
     }
     
     #d1,
     #d2 {
         position: absolute;
-        height: 600px;
-        width: 600px;
+       
     }
     
     #d1 {
@@ -22,11 +20,14 @@
     }
 </style>
 <ion-view title="eTest results for trt">
-    <ion-content padding="true" class="has-header">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
 
-        <div id="w">
-            <cjs-line id="d1" dataset="data" options="options" responsive="false" maintainAspectRatio="true"></cjs-line>
-            <cjs-line id="d2" dataset="data1" options="options1" responsive="false" maintainAspectRatio="false"></cjs-line>
+        <div id="w" style="width: 100%; height: 600px;">
+            <article class="chart-container" style="width: 60%; margin: 0 auto; height: 80%;">
+		
+            <cjs-line id="d1" dataset="data" options="options" ></cjs-line>
+            <cjs-line id="d2" dataset="data1" options="options1" ></cjs-line>
+            </article>
         </div>
     </ion-content>
 </ion-view>
