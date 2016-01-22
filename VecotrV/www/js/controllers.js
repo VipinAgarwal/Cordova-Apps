@@ -3,7 +3,7 @@ angular.module('app.controllers', [])
     .controller('addPatientCtrl', function ($scope, $state) {
         $scope.addpatient = {
             fName: '',
-            lNam: '',
+            lName: '',
             gender: '',
             dob: '',
             mrn: ''
@@ -11,6 +11,12 @@ angular.module('app.controllers', [])
 
         $scope.addPatient = function (form) {
             if (form.$valid) {
+                $scope.$parent.patient = {};
+                $scope.$parent.patient = {fName: form.fName.$modelValue ,
+            lName: form.lName.$modelValue,
+            gender: form.gender.$modelValue,
+            dob: form.dob.$modelValue,
+            mrn: form.mrn.$modelValue};
                 $state.go('selectTest');
             }
         };
@@ -20,7 +26,7 @@ angular.module('app.controllers', [])
     .controller('selectTestCtrl', function ($scope, $state) {
         $scope.selectTest = function(event){
             if(event.target.id == "e" || event.target.id =="echar1"){
-                $state.go('eTest');
+                $state.go('selectCondition');
             }
         }
 
@@ -58,7 +64,7 @@ angular.module('app.controllers', [])
         };
 
     })
-    .controller('eTestCtrl', function ($scope) {
+    .controller('eTestCtrl', function ($scope, $state) {
 
         $scope.A = {};
         $scope.A.data = [];
@@ -102,17 +108,84 @@ angular.module('app.controllers', [])
         var getscore = function (row) {
             var score = 0;
             for (i = 0; i < 8; i++) {
-                if (row.data[i].selected.id == "T" || row.data[i].selected.id == "B")
+                if (row.data[i].selected.label == "Top" || row.data[i].selected.label == "Bottom")
                     score = score + 1;
             }
             return score;
         }
         $scope.genrateGraph = function () {
-            $scope.right = {};
-            $scope.right.A = getscore($scope.A);
-            $scope.right.B = getscore($scope.B);
-            $scope.right.C = getscore($scope.C);
-            $scope.right.D = getscore($scope.D);
+            $scope.$parent.patient.etestResults = {};
+            var result =  {A:{},B:{},C:{},D:{}}
+            result.A = getscore($scope.A);
+            result.B = getscore($scope.B);
+            result.C = getscore($scope.C);
+            result.D = getscore($scope.D);
+            $scope.$parent.patient.etestResults = result;
+            $state.go('egraph');
         }
     })
- 
+ .controller('egraphCntrl', function ($scope) {
+    $scope.data = {
+      
+      labels: ["A","B","C","D"],
+      datasets: [ {
+        label: "My Third dataset",
+        
+        fillColor: "rgba(151,187,205,0.2)",
+        data: [2.08, 2.29, 1.99, 1.55]
+      },{
+        label: "My Second dataset",
+        fillColor: "rgb(224,255,255)",
+        data: [1.49, 1.7, 1.40, .96]
+      },
+      {
+        label: "My First dataset",
+        fillColor: "rgb(255,255,255)",
+        data: [1, 1.21, .91, .47]
+      }
+      ]
+    };
+    $scope.options = {
+      showScale:true,
+      scaleShowVerticalLines:true,
+      pointDot : false,
+      bezierCurve: false,
+      scaleShowGridLines : false,
+      showTooltips: false,
+       datasetFill : true,
+    };
+     $scope.data1 = {
+      
+      labels: ["A","B","C","D"],
+     datasets: [ {
+        label: "My Third dataset",
+        
+        fillColor: "rgba(151,187,205,0.2)",
+        data: [2.08, 2.29, 1.99, 1.55]
+      },{
+        label: "My Second dataset",
+        strokeColor: "rgba(123,120,220,1)",
+        data: [1.69, 1.8, 1.60, 1.26]
+      },
+      {
+        label: "My First dataset",
+        fillColor: "rgb(255,255,255)",
+        strokeColor: "rgba(255,255,255,1)",
+        data: [1, 1.21, .91, .47]
+      }
+      
+      ]
+    };
+      $scope.options1 = {
+      showScale:true,
+      scaleShowVerticalLines:false,
+      pointDot : false,
+      bezierCurve: false,
+      scaleShowGridLines : false,
+      showTooltips: false,
+       datasetFill : false,
+    };
+     //$scope.patient = $scope.$parent.patient;
+     //$scope.patient.name = $scope.patient.fName + " " + $scope.patient.lName;
+   //  var results = $scope.patient.etestResults;
+ })

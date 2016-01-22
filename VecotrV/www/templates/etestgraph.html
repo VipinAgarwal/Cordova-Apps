@@ -1,0 +1,32 @@
+<style>
+    #w {
+        height: 800px;
+        width: 800px;
+    }
+    
+    #d1,
+    #d2 {
+        position: absolute;
+        height: 600px;
+        width: 600px;
+    }
+    
+    #d1 {
+        top: 0px;
+        left: 0px;
+    }
+    
+    #d2 {
+        top: 0%;
+        left: 0%;
+    }
+</style>
+<ion-view title="eTest results for trt">
+    <ion-content padding="true" class="has-header">
+
+        <div id="w">
+            <cjs-line id="d1" dataset="data" options="options" responsive="false" maintainAspectRatio="true"></cjs-line>
+            <cjs-line id="d2" dataset="data1" options="options1" responsive="false" maintainAspectRatio="false"></cjs-line>
+        </div>
+    </ion-content>
+</ion-view>

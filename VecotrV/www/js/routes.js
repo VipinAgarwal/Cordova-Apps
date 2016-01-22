@@ -45,7 +45,7 @@ angular.module('app.routes', [])
 
 
             .state('selectCondition', {
-                url: '/page4',
+                url: '/selectCondition',
                 templateUrl: 'templates/selectCondition.html',
                 controller: 'selectConditionCtrl'
             })
@@ -64,6 +64,11 @@ angular.module('app.routes', [])
                 url: '/etest',
                 templateUrl: 'templates/etest.html',
                 controller: 'eTestCtrl'
+            })
+            .state('egraph', {
+                url: '/egraph',
+                templateUrl: 'templates/etestgraph.html',
+                controller: 'egraphCntrl'
             })
 
         ;
