@@ -1,6 +1,12 @@
 /* global i */
 angular.module('app.controllers', [])
-    .controller('addPatientCtrl', function ($scope, $state) {
+    .controller('addPatientCtrl', function ($scope, $state,$location,$ionicNavBarDelegate) {
+        var path = $location.path();
+   if (path.indexOf('login') != -1)
+     $ionicNavBarDelegate.showBackButton(false);
+   else
+     $ionicNavBarDelegate.showBackButton(true);
+     
         $scope.addpatient = {
             fName: '',
             lName: '',
@@ -32,7 +38,10 @@ angular.module('app.controllers', [])
 
     })
 
-    .controller('homeCtrl', function ($scope) {
+    .controller('homeCtrl', function ($scope,  $state) {
+        $scope.reset = function(){
+             $state.go('login');
+        }
 
     })
 
@@ -50,7 +59,13 @@ angular.module('app.controllers', [])
         };
 
     })
-    .controller('loginCtrl', function ($scope, $state) {
+    .controller('loginCtrl', function ($scope, $state, $location, $ionicNavBarDelegate) {
+var path = $location.path();
+   if (path.indexOf('login') != -1)
+     $ionicNavBarDelegate.showBackButton(false);
+   else
+     $ionicNavBarDelegate.showBackButton(true);
+     
 
         $scope.authorization = {
             username: '',
@@ -59,7 +74,7 @@ angular.module('app.controllers', [])
 
         $scope.signIn = function (form) {
             if (form.$valid) {
-                $state.go('addPatient');
+                $state.go('searchForPatient');
             }
         };
 
@@ -120,14 +135,16 @@ angular.module('app.controllers', [])
             result.B = getscore($scope.B);
             result.C = getscore($scope.C);
             result.D = getscore($scope.D);
+            result.testdate = Date.now();
             $scope.$parent.patient.etestResults = result;
+            
             $state.go('egraph');
         }
     })
  .controller('egraphCntrl', function ($scope) {
-    // var eresult = $scope.$parent.patient.etestResults;
+    var eresult = $scope.$parent.patient.etestResults;
      //test data.. 
-     var eresult = {A:0,B:0,C:0,D:0};   
+    // var eresult = {A:0,B:0,C:0,D:0};   
      var A = [.70,1,1.17,1.34,1.49,1.63,1.78,1.93,2.08];
      var B= [.91,1.21,1.38,1.55,1.7,1.84,1.99,2.14,2.29];
      var C = [.61,.91,1.08,1.25,1.4,1.54,1.69,1.84,1.99];
@@ -207,10 +224,16 @@ angular.module('app.controllers', [])
        maintainAspectRatio: true,
     responsive: true
     };
-    
+    function calculateAge(birthday) { // birthday is a date
+    var ageDifMs = Date.now() - birthday.getTime();
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
    // mychart.Line(data,{scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 1, scaleSteps: 30});
 
-     //$scope.patient = $scope.$parent.patient;
-     //$scope.patient.name = $scope.patient.fName + " " + $scope.patient.lName;
+     $scope.patient = $scope.$parent.patient;
+     $scope.patient.name = $scope.patient.fName + " " + $scope.patient.lName;
+     $scope.patient.age = calculateAge( $scope.patient.dob);
+     $scope.patient.date = eresult.testdate;
    //  var results = $scope.patient.etestResults;
  })

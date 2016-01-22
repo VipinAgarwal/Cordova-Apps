@@ -55,7 +55,7 @@ angular.module('app.routes', [])
 
 
             .state('searchForPatient', {
-                url: '/page5',
+                url: '/searchForPatient',
                 templateUrl: 'templates/searchForPatient.html',
                 controller: 'searchForPatientCtrl'
             })
