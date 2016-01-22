@@ -5,9 +5,13 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives'])
+angular.module('app', ['ionic','ngMessages', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'ngIOS9UIWebViewPatch'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $templateCache, $http) {
+    $http.get('templates/errors.html')
+  .then(function(response) {
+    $templateCache.put('error-messages', response.data); 
+  })
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,4 +23,10 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
       StatusBar.styleDefault();
     }
   });
+})
+.config(function($ionicConfigProvider) {
+  $ionicConfigProvider.views.maxCache(15);
+
+  // note that you can also chain configs
+  //$ionicConfigProvider.backButton.text('Go Back').icon('ion-chevron-left');
 })

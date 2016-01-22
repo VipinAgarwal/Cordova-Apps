@@ -11,7 +11,7 @@ angular.module('app.routes', [])
       
         
     .state('login', {
-      url: '/page1',
+      url: '/login',
       templateUrl: 'templates/login.html',
       controller: 'loginCtrl'
     })
@@ -21,7 +21,7 @@ angular.module('app.routes', [])
       
         
     .state('addPatient', {
-      url: '/page2',
+      url: '/addPatient',
       templateUrl: 'templates/addPatient.html',
       controller: 'addPatientCtrl'
     })
@@ -31,7 +31,7 @@ angular.module('app.routes', [])
       
         
     .state('selectTest', {
-      url: '/page3',
+      url: '/selectTest',
       templateUrl: 'templates/selectTest.html',
       controller: 'selectTestCtrl'
     })
@@ -65,6 +65,6 @@ angular.module('app.routes', [])
     ;
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/etest');
+  $urlRouterProvider.otherwise('/login');
 
 });
