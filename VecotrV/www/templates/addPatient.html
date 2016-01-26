@@ -5,7 +5,7 @@
                 <label class="item item-input" ng-class="{ 'has-errors' : addPatientForm.fName.$invalid, 'no-errors' : addPatientForm.fName.$valid}">
                    
                     <span class="input-label">First Name:</span>
-                    <input type="text" name="fName" ng-model="addPatient.fName" placeholder="" ng-minlength="5" ng-maxlength="20" required>
+                    <input type="text" name="fName" ng-model="addPatient.fName" placeholder="" ng-minlength="2" ng-maxlength="20" required>
                     </label>
                     <div class="error-container last-error-container" ng-show="addPatientForm.fName.$error && addPatientForm.$submitted"
                     ng-messages-include="error-messages" ng-messages="addPatientForm.fName.$error">
@@ -14,7 +14,7 @@
                 <label class="item item-input" ng-class="{ 'has-errors' : addPatientForm.lName.$invalid, 'no-errors' : addPatientForm.lName.$valid}">
                 
                     <span class="input-label">Last Name:</span>
-                    <input type="text" name="lName" ng-model="addPatient.lName" placeholder="" ng-minlength="5" ng-maxlength="20" required>
+                    <input type="text" name="lName" ng-model="addPatient.lName" placeholder="" ng-minlength="2" ng-maxlength="20" required>
                     </label>
                     <div class="error-container last-error-container" ng-show="addPatientForm.lName.$error && addPatientForm.$submitted"
                     ng-messages-include="error-messages" ng-messages="addPatientForm.lName.$error">
