@@ -81,65 +81,26 @@ var path = $location.path();
     })
     .controller('eTestCtrl', function ($scope, $state) {
 
-        $scope.A = {};
-        $scope.A.data = [];
-        $scope.A.section = "A";
-        for (i = 0; i < 8; i++) {
-            $scope.A.data[i] = {};
-            $scope.A.data[i].selectoptions = [{ id: 'T', label: "Top" }, { id: 'B', label: "Bottom" }, { id: 'None', label: "None" }];
-            $scope.A.data[i].boxno = i + 1;
-            $scope.A.data[i].selected = $scope.A.data[i].selectoptions[2];
-        }
-
-        $scope.B = {};
-        $scope.B.data = [];
-        $scope.B.section = "B";
-        for (i = 0; i < 8; i++) {
-            $scope.B.data[i] = {};
-            $scope.B.data[i].selectoptions = [{ id: 'T' + i, label: "Top" }, { id: 'B' + i, label: "Bottom" }, { id: 'None' + i, label: "None" }];
-            $scope.B.data[i].boxno = i + 1;
-            $scope.B.data[i].selected = $scope.B.data[i].selectoptions[2];
-        }
-
-        $scope.C = {};
-        $scope.C.data = [];
-        $scope.C.section = "C";
-        for (i = 0; i < 8; i++) {
-            $scope.C.data[i] = {};
-            $scope.C.data[i].selectoptions = [{ id: 'T' + i, label: "Top" }, { id: 'B' + i, label: "Bottom" }, { id: 'None' + i, label: "None" }];
-            $scope.C.data[i].boxno = i + 1;
-            $scope.C.data[i].selected = $scope.C.data[i].selectoptions[2];
-        }
-
-        $scope.D = {};
-        $scope.D.data = [];
-        $scope.D.section = "D";
-        for (i = 0; i < 8; i++) {
-            $scope.D.data[i] = {};
-            $scope.D.data[i].selectoptions = [{ id: 'T' + i, label: "Top" }, { id: 'B' + i, label: "Bottom" }, { id: 'None' + i, label: "None" }];
-            $scope.D.data[i].boxno = i + 1;
-            $scope.D.data[i].selected = $scope.D.data[i].selectoptions[2];
-        }
-        var getscore = function (row) {
-            var score = 0;
-            for (i = 0; i < 8; i++) {
-                if (row.data[i].selected.label == "Top" || row.data[i].selected.label == "Bottom")
-                    score = score + 1;
-            }
-            return score;
-        }
-        $scope.genrateGraph = function () {
+     var  getValuefromDropDown = function(value){
+       if(value == null || value == "None")
+       {
+           return 0;
+       }  
+       else return value;
+     };
+       
+        $scope.generateGraph = function (form) {
             $scope.$parent.patient.etestResults = {};
             var result =  {A:{},B:{},C:{},D:{}}
-            result.A = getscore($scope.A);
-            result.B = getscore($scope.B);
-            result.C = getscore($scope.C);
-            result.D = getscore($scope.D);
+            result.A = getValuefromDropDown(form.A.$modelValue);
+            result.B = getValuefromDropDown(form.B.$modelValue);
+            result.C = getValuefromDropDown(form.C.$modelValue);
+            result.D = getValuefromDropDown(form.D.$modelValue);
             result.testdate = Date.now();
             $scope.$parent.patient.etestResults = result;
             
             $state.go('egraph');
-        }
+        };
     })
  .controller('egraphCntrl', function ($scope) {
     var eresult = $scope.$parent.patient.etestResults;

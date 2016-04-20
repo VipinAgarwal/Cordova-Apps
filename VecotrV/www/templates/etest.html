@@ -1,15 +1,73 @@
 <ion-view title="E Test">
     <ion-content padding="true" class="has-header">
-        <form class="list">
-            <tristate-button info="A"></tristate-button>
-            <div class="spacer" style="height: 40px;"></div>
-            <tristate-button info="B"></tristate-button>
-            <div class="spacer" style="height: 40px;"></div>
-            <tristate-button info="C"></tristate-button>
-            <div class="spacer" style="height: 40px;"></div>
-            <tristate-button info="D"></tristate-button>
-            <div class="spacer" style="height: 40px;"></div>
+        <form class="list" novalidate="" name="eTestResultForm" ng-submit="generateGraph(eTestResultForm)">
+              <label class="item item-input">
+                  <div class="input-label">
+                        A:
+                    </div>
+                     <select name="A" ng-model="A">
+                        <option selected>None</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+                      <label class="item item-input">
+                  <div class="input-label">
+                        B:
+                    </div>
+                     <select name="B" ng-model="B">
+                        <option selected>None</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+            <label class="item item-input">
+                  <div class="input-label">
+                        C:
+                    </div>
+                     <select name="C" ng-model="C">
+                        <option selected>None</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        
+                    </select>
+                </label>
+            <label class="item item-input">
+                  <div class="input-label">
+                        D:
+                    </div>
+                     <select name="D" ng-model="D">
+                         <option selected>None</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+       <button class="button button-full button-positive" type="submit">Generate results</button>
         </form>
-        <a class="button button-full button-positive " ng-click="genrateGraph()">Generate results</a>
+        
     </ion-content>
 </ion-view>
