@@ -1,13 +1,14 @@
 <style>
     #w {
-       top: 30px;
+        top: 30px;
         left: 10px;
+        height: 300px;
     }
     
     #d1,
     #d2 {
         position: absolute;
-       
+        height: 1300px;
     }
     
     #d1 {
@@ -19,7 +20,8 @@
         top: 40px;
         left: 10px;
     }
-    #b{
+    
+    #b {
         float: right;
         bottom: 30px;
         margin-right: 50px;
@@ -27,33 +29,35 @@
 </style>
 
 <ion-view title="CSV - 1000 E">
-    
+
     <ion-content overflow-scroll="true" padding="true" class="has-header">
-<h3> Contract Sensitivity (ages 20 -75)</h3>
-        <div id="w">
-            <article class="chart-container" style="width: 60%; margin: 0 auto; height: 80%;">
-		
-            <cjs-line id="d1" dataset="data" options="options" ></cjs-line>
-            <cjs-line id="d2" dataset="data1" options="options1" ></cjs-line>
-           
+        <h3> Contract Sensitivity (ages 20 -75)</h3>
+        <!--<highchart id="chart1" config="chartConfig"></highchart>-->
+        <!--<div id="w">
+            <article class="chart-container" style="width: 100%; margin: 0 auto; height: 300px;">
+
+                <cjs-line id="d1" dataset="data" options="options"></cjs-line>
+                <cjs-line id="d2" dataset="data1" options="options1"></cjs-line>
+
             </article>
-            
-        </div>
-         <div id="b">
-             <ion-list>
-               <label class="item item-input">  <span><border class="input-label" style="height:25px; width:25px; background:rgb(136,174,186); float:left"></border><span>
+
+        </div>-->
+        <!--<div id="b">
+            <ion-list>
+                <label class="item item-input"> <span><border class="input-label" style="height:25px; width:25px; background:rgb(136,174,186); float:left"></border><span>
                    <span style="margin-left:5px">Ages 20 - 55</span>
-                   </label>
-                  <label class="item item-input">  <span><border class="input-label" style="height:25px; width:25px; background:rgb(74,126,143); float:left"></border><span>
+                </label>
+                <label class="item item-input"> <span><border class="input-label" style="height:25px; width:25px; background:rgb(74,126,143); float:left"></border><span>
                    <span style="margin-left:5px">Ages 56 - 75</span>
-                   </label>
-            <ion-item>Patient Name: {{patient.name}}</ion-item>
-            <ion-item>Age: {{patient.age}}</ion-item>
-            <ion-item>Date: {{patient.date | date : 'medium'}}</ion-item>
-            <label class="item item-input">
-                <span class="input-label">Comments:</span><textarea placeholder=""> </textarea>
-            </label>
-        </ion-list>
-            </div>
+                </label>
+                <ion-item>Patient Name: {{patient.name}}</ion-item>
+                <ion-item>Age: {{patient.age}}</ion-item>
+                <ion-item>Date: {{patient.date | date : 'medium'}}</ion-item>
+                <label class="item item-input">
+                    <span class="input-label">Comments:</span>
+                    <textarea placeholder=""> </textarea>
+                </label>
+            </ion-list>
+        </div>-->
     </ion-content>
 </ion-view>

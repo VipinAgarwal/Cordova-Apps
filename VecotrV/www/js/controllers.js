@@ -103,9 +103,9 @@ var path = $location.path();
         };
     })
  .controller('egraphCntrl', function ($scope) {
-    var eresult = $scope.$parent.patient.etestResults;
+   // var eresult = $scope.$parent.patient.etestResults;
      //test data.. 
-    // var eresult = {A:0,B:0,C:0,D:0};   
+     var eresult = {A:0,B:0,C:0,D:0};   
      var A = [.70,1,1.17,1.34,1.49,1.63,1.78,1.93,2.08];
      var B= [.91,1.21,1.38,1.55,1.7,1.84,1.99,2.14,2.29];
      var C = [.61,.91,1.08,1.25,1.4,1.54,1.69,1.84,1.99];
@@ -142,6 +142,7 @@ var path = $location.path();
       ]
     };
     $scope.options = {
+        
       showScale:true,
       scaleShowVerticalLines:true,
       pointDot : false,
@@ -150,7 +151,26 @@ var path = $location.path();
       showTooltips: true,
        datasetFill : true,
        maintainAspectRatio: true,
-    responsive: true
+    responsive: true, 
+    scales:{
+        xAxes: [{
+         		type: 'logarithmic',
+ 	            		position: 'top',
+ 	            		labels: {
+ 	            			userCallback: function(tick) {
+ 	            				return tick.toString() + "Hz";
+ 	            			}
+ 	            		}
+ 	            	}],
+ 	            	yAxes: [{
+ 	            		type: 'linear',
+ 	            		labels: {
+ 	            			userCallback: function(tick) {
+ 	            				return tick.toString() + "dB";
+ 	            			}
+ 	            		}
+ 	            	}]
+    }
     };
      $scope.data1 = {
       
@@ -162,7 +182,7 @@ var path = $location.path();
       },
       {
         label: "My Result dataset",
-        strokeColor: "rgb(255,0,0)",
+        strokeColor: "rgb(0,255,0)",
         data: [A[eresult.A], B[eresult.B], C[eresult.C], D[eresult.D]]
       },
       {
@@ -183,7 +203,26 @@ var path = $location.path();
       showTooltips: false,
        datasetFill : false,
        maintainAspectRatio: true,
-    responsive: true
+    responsive: true,
+    scales:{
+        xAxes: [{
+         		type: 'logarithmic',
+ 	            		position: 'top',
+ 	            		labels: {
+ 	            			userCallback: function(tick) {
+ 	            				return tick.toString() + "Hz";
+ 	            			}
+ 	            		}
+ 	            	}],
+ 	            	yAxes: [{
+ 	            		type: 'linear',
+ 	            		labels: {
+ 	            			userCallback: function(tick) {
+ 	            				return tick.toString() + "dB";
+ 	            			}
+ 	            		}
+ 	            	}]
+    }
     };
     function calculateAge(birthday) { // birthday is a date
     var ageDifMs = Date.now() - birthday.getTime();
@@ -192,9 +231,58 @@ var path = $location.path();
 }
    // mychart.Line(data,{scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 1, scaleSteps: 30});
 
-     $scope.patient = $scope.$parent.patient;
-     $scope.patient.name = $scope.patient.fName + " " + $scope.patient.lName;
-     $scope.patient.age = calculateAge( $scope.patient.dob);
-     $scope.patient.date = eresult.testdate;
+    //  $scope.patient = $scope.$parent.patient;
+    //  $scope.patient.name = $scope.patient.fName + " " + $scope.patient.lName;
+    //  $scope.patient.age = calculateAge( $scope.patient.dob);
+    //  $scope.patient.date = eresult.testdate;
    //  var results = $scope.patient.etestResults;
+
+
+ $scope.chartConfig = {
+
+  options: {
+      //This is the Main Highcharts chart config. Any Highchart options are valid here.
+      //will be overriden by values specified below.
+      chart: {
+          type: 'bar'
+      },
+      tooltip: {
+          style: {
+              padding: 10,
+              fontWeight: 'bold'
+          }
+      }
+  },
+  //The below properties are watched separately for changes.
+
+  //Series object (optional) - a list of series using normal Highcharts series options.
+  series: [{
+     data: [10, 15, 12, 8, 7]
+  }],
+  //Title configuration (optional)
+  title: {
+     text: 'Hello'
+  },
+  //Boolean to control showing loading status on chart (optional)
+  //Could be a string if you want to show specific loading text.
+  loading: false,
+  //Configuration for the xAxis (optional). Currently only one x axis can be dynamically controlled.
+  //properties currentMin and currentMax provided 2-way binding to the chart's maximum and minimum
+  xAxis: {
+  currentMin: 0,
+  currentMax: 20,
+  title: {text: 'values'}
+  },
+  //Whether to use Highstocks instead of Highcharts (optional). Defaults to false.
+  useHighStocks: false,
+  //size (optional) if left out the chart will default to size of the div or something sensible.
+  size: {
+   width: 400,
+   height: 300
+  },
+  //function (optional)
+  func: function (chart) {
+   //setup some logic for the chart
+  }
+};
  })
