@@ -1,110 +1,240 @@
 angular.module('app.directives', [])
 
-.directive('tristateButton', [function(){
+  .directive('tristateButton', [function () {
 
-	return{
-        scope: {
-      row: '=info'
-    },
-		templateUrl:'templates/tristatebutton.html'
-	};
-
-}])
-.directive('d3Bars', ['$window', '$timeout', 'd3Service', 
-  function($window, $timeout, d3Service) {
     return {
-      restrict: 'A',
       scope: {
-        data: '=',
-        label: '@',
-        onClick: '&'
+        row: '=info'
       },
-      link: function(scope, ele, attrs) {
-        d3Service.d3().then(function(d3) {
+      templateUrl: 'templates/tristatebutton.html'
+    };
 
-          var renderTimeout;
-          var margin = parseInt(attrs.margin) || 20,
+  }])
+  .directive('d3Bars', ['$window', '$timeout', 'd3Service',
+    function ($window, $timeout, d3Service) {
+      return {
+        restrict: 'A',
+        scope: {
+          data: '=',
+          label: '@',
+          onClick: '&'
+        },
+        link: function (scope, ele, attrs) {
+          d3Service.d3().then(function (d3) {
+
+            var renderTimeout;
+
+
+            var margin = parseInt(attrs.margin) || 20,
               barHeight = parseInt(attrs.barHeight) || 20,
               barPadding = parseInt(attrs.barPadding) || 5;
 
-          var svg = d3.select(ele[0])
-            .append('svg')
-            .style('width', '100%');
+            var svg = d3.select(ele[0])
+              .append('svg')
+              .style('width', '100%');
 
-          $window.onresize = function() {
-            scope.$apply();
-          };
-  // hard-code data
-          scope.data = [
-            {name: "Greg", score: 98},
-            {name: "Ari", score: 96},
-            {name: 'Q', score: 75},
-            {name: "Loser", score: 48}
-          ];
-          scope.$watch(function() {
-            return angular.element($window)[0].innerWidth;
-          }, function() {
-            scope.render(scope.data);
-          });
+            $window.onresize = function () {
+              scope.$apply();
+            };
 
-          scope.$watch('data', function(newData) {
-            scope.render(newData);
-          }, true);
+            //scope.data = [1.78, 1.70, 1.40, 1.25 ];
+            scope.data = [
+              { x: 3, y: 2.08 +.7 },
+              { x: 6, y: 2.29 +.91 },
+              { x: 12, y: 1.99 + .61 },
+              { x: 18, y: 1.55 + .17 }
+            ];
 
-          scope.render = function(data) {
-            svg.selectAll('*').remove();
+            scope.d1 = [
+              { x: 3, y: 2.08 },
+              { x: 6, y: 2.29 },
+              { x: 12, y: 1.99 },
+              { x: 18, y: 1.55 }
+            ];
 
-            if (!data) return;
-            if (renderTimeout) clearTimeout(renderTimeout);
+            scope.d2 = [
+              { x: 3, y: 1.78 },
+              { x: 6, y: 1.99 },
+              { x: 12, y: 1.69 },
+              { x: 18, y: 1.25 }
+            ];
 
-            renderTimeout = $timeout(function() {
-              var width = d3.select(ele[0])[0][0].offsetWidth - margin,
+            scope.d3 = [
+              { x: 3, y: 1.63 },
+              { x: 6, y: 1.84 },
+              { x: 12, y: 1.54 },
+              { x: 18, y: 1.1 }
+            ];
+
+            scope.d4 = [
+              { x: 3, y: 1.34 },
+              { x: 6, y: 1.55 },
+              { x: 12, y: 1.25 },
+              { x: 18, y: .81 }
+            ];
+
+            scope.$watch(function () {
+              return angular.element($window)[0].innerWidth;
+            }, function () {
+              scope.render(scope.data);
+            });
+
+            scope.$watch('data', function (newData) {
+              scope.render(newData);
+            }, true);
+
+            scope.render = function (data) {
+              svg.selectAll('*').remove();
+
+              if (!data) return;
+              if (renderTimeout) clearTimeout(renderTimeout);
+
+              renderTimeout = $timeout(function () {
+
+                var m = [80, 80, 80, 80]; // margins
+                var w = d3.select(ele[0])[0][0].offsetWidth - m[0]; // width
+                //var h = d3.select(ele[0])[0][0].offsetHeight - m[0]; // height
+
+                var h = 750;
+                var line = d3.svg.line()
+                  .x(function (d) { return x(d.x); })
+                  .y(function (d) { return y(d.y); });
+
+                var width = d3.select(ele[0])[0][0].offsetWidth - margin,
                   height = scope.data.length * (barHeight + barPadding),
-                  color = d3.scale.category20(),
+                  color = d3.scale.category20();
+                var x = d3.scale.log()
+                  .domain([2.5, 20])
+                  .range([0, w]),
                   xScale = d3.scale.linear()
-                    .domain([0, d3.max(data, function(d) {
+                    .domain([0, d3.max(data, function (d) {
                       return d.score;
                     })])
-                    .range([0, width]);
+                    .range([0, w]);
+                ticks = xScale.ticks();
+                ticks.push(3);
+                ticks.push(6);
+                ticks.push(12);
+                ticks.push(18);
 
-              svg.attr('height', height);
+                var y = d3.scale.linear().domain([0, 3.5]).range([h, 0]);
+                var yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left");
+                var xAxis = d3.svg.axis()
+                  .scale(x)
+                  .orient("bottom")
+                  .ticks(10, ",.2s")
+                  .tickValues(ticks);
+                scope.Areadata = [
+                  { x: 3, y: 2.08 },
+                  { x: 6, y: 2.29 },
+                  { x: 12, y: 1.78 },
+                  { x: 18, y: 1.79 },
+                ];
+                var area = d3.svg.area()
+                  .x(function (d) { return x(d.x); })
+                  .y0(0)
+                  .y1(function (d) { return y(d.y); });
 
-              svg.selectAll('rect')
-                .data(data)
-                .enter()
-                  .append('rect')
-                  .on('click', function(d,i) {
-                    return scope.onClick({item: d});
-                  })
-                  .attr('height', barHeight)
-                  .attr('width', 140)
-                  .attr('x', Math.round(margin/2))
-                  .attr('y', function(d,i) {
-                    return i * (barHeight + barPadding);
-                  })
-                  .attr('fill', function(d) {
-                    return color(d.score);
-                  })
-                  .transition()
-                    .duration(1000)
-                    .attr('width', function(d) {
-                      return xScale(d.score);
-                    });
-              svg.selectAll('text')
-                .data(data)
-                .enter()
-                  .append('text')
-                  .attr('fill', '#fff')
-                  .attr('y', function(d,i) {
-                    return i * (barHeight + barPadding) + 15;
-                  })
-                  .attr('x', 15)
-                  .text(function(d) {
-                    return d.name + " (scored: " + d.score + ")";
-                  });
-            }, 200);
-          };
-        });
-      }}
-}]);
+                // .x0(3)
+                // .y0(2.08)
+                // .x1(6)
+                // .y1(2.29)
+                // .x2(3)
+                // .y2(1.78)
+                // .x3(6)
+                // .y3(1.99);
+
+                // svg.attr('height', h);
+
+                var graph = svg
+                  .attr("width", w + m[1] + m[3])
+                  .attr("height", h + m[0] + m[2])
+                  .append('g')
+                  .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+
+                svg.append('line')
+                  .attr("y1", y(0.4))
+                  .attr("y2", y(3.3))
+                  .attr("x1", x(3))
+                  .attr("x2", x(3))
+                  .attr("stroke", "steelblue")
+                  .attr("stroke-width", "1");
+
+                svg.append('line')
+                  .attr("y1", y(0.4))
+                  .attr("y2", y(3.3))
+                  .attr("x1", x(6))
+                  .attr("x2", x(6))
+                  .attr("stroke", "steelblue")
+                  .attr("stroke-width", "1");
+
+                svg.append('line')
+                  .attr("y1", y(0.4))
+                  .attr("y2", y(3.3))
+                  .attr("x1", x(12))
+                  .attr("x2", x(12))
+                  .attr("stroke", "steelblue")
+                  .attr("stroke-width", "1");
+
+                svg.append('line')
+                  .attr("y1", y(0.4))
+                  .attr("y2", y(3.3))
+                  .attr("x1", x(18))
+                  .attr("x2", x(18))
+                  .attr("stroke", "steelblue")
+                  .attr("stroke-width", "1");
+
+                svg.append("rect")
+                  .attr("x", 0)
+                  .attr("y", 0)
+                  .attr("height", h + 30)
+                  .attr("width", w + 20)
+                  .style("stroke", "black")
+                  .style("fill", "none")
+                  .style("stroke-width", "4");
+
+
+                // svg.area()
+                // .x0(3)
+                // .y0(2.08)
+                // .x1(6)
+                // .y1(2.29)
+                // .x2(3)
+                // .y2(1.78)
+                // .x3(6)
+                // .y3(1.99);
+
+                svg.append('g')
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(10,820)")
+                  .style("stroke", "black")
+                  .style("fill", "none")
+                  .style("stroke-width", "1")
+                  .call(xAxis);
+
+                svg.append('g')
+                  .attr("class", "y axis")
+                  .attr("transform", "translate(-20,-5)")
+                  .style("stroke", "black")
+                  .style("fill", "none")
+                  .style("stroke-width", "1")
+                  .call(yAxisLeft);
+                svg.append('path')
+                .attr('d', line(scope.data))
+                .style("stroke", "blue")
+                  .style("fill", "none")
+                  .style("stroke-width", "1");
+                  
+                // svg.append('path')
+                //   .style("stroke", "black")
+                //   .style("fill", "steelblue")
+                //   .style("stroke-width", "1")
+                //   .attr('d', area(scope.Areadata));
+
+              }, 200);
+            };
+          });
+        }
+      }
+    }]);
 
