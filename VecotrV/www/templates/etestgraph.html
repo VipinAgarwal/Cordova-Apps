@@ -1,6 +1,4 @@
 <style>
-   
-            
     #w {
         top: 30px;
         left: 10px;
@@ -10,23 +8,14 @@
     #d1,
     #d2 {
         position: absolute;
-        height: 1300px;
     }
     
-    #d1 {
-        top: 40px;
-        left: 10px;
-    }
-    
-    #d2 {
-        top: 40px;
-        left: 10px;
-    }
+   
     
     #b {
         float: right;
         bottom: 30px;
-        margin-right: 50px;
+        width: 250px;
     }
 </style>
 
@@ -34,7 +23,9 @@
 
     <ion-content overflow-scroll="true" padding="true" class="has-header">
         <h3> Contract Sensitivity (ages 20 -75)</h3>
-        <div d3-bars bar-height="20" bar-padding="5" id="graph"></div>
+        <div>
+            <div d3-bars id="graph" result-edata="patient.edata"></div>
+        </div>
         <!--<highchart id="chart1" config="chartConfig"></highchart>-->
         <!--<div id="w">
             <article class="chart-container" style="width: 100%; margin: 0 auto; height: 300px;">
@@ -45,8 +36,7 @@
             </article>
 
         </div>-->
-        <!--<div id="b">
-            sample change..
+        <div id="b">
             <ion-list>
                 <label class="item item-input"> <span><border class="input-label" style="height:25px; width:25px; background:rgb(136,174,186); float:left"></border><span>
                    <span style="margin-left:5px">Ages 20 - 55</span>
@@ -62,6 +52,6 @@
                     <textarea placeholder=""> </textarea>
                 </label>
             </ion-list>
-        </div>-->
+        </div>
     </ion-content>
 </ion-view>
