@@ -1,6 +1,6 @@
 //angular.module('app.controllers', [])
   app = angular.module('app.controllers');  
-  app.controller('selectConditionCtrl', function ($scope, $cordovaPrinter) {
+  app.controller('selectConditionSCharCtrl', function ($scope, $cordovaPrinter) {
 
         var A = [0, .70, 1, 1.17, 1.34, 1.49, 1.63, 1.78, 1.93, 2.08];
         var B = [0, .91, 1.21, 1.38, 1.55, 1.7, 1.84, 1.99, 2.14, 2.29];

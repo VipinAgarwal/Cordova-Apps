@@ -36,6 +36,9 @@ angular.module('app.controllers', [])
             if (event.target.id == "e" || event.target.id == "echar1") {
                 $state.go('selectCondition');
             }
+            else if(event.target.id == "slanc" ){
+                $state.go('selectConditionForSChar');
+            }
             else {
                 $state.go('selectConditionForS');
             }

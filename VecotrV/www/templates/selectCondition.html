@@ -1,4 +1,11 @@
-<ion-view title="Select Condition">
+<style>
+    #b {
+        float: right;
+        bottom: 30px;
+        width: 250px;
+    }
+</style>
+<ion-view title="E Test">
     <ion-content padding="true" class="has-header">
         <form class="list" novalidate="" name="eTestResultForm">
             <div class="row row-top">
@@ -295,7 +302,28 @@
                 </label>
                 </div>
             </div>
+
+            <div>
+                <div d3-bars id="graph" result-edata="result"></div>
+            </div>
+            <div id="b">
+                <ion-list>
+                    <label class="item item-input"> <span><border class="input-label" style="height:25px; width:25px; background:#A9E2F3; float:left"></border><span>
+                   <span style="margin-left:5px">Ages 20 - 55</span>
+                </label>
+                    <label class="item item-input"> <span><border class="input-label" style="height:25px; width:25px; background:#A9BCF5; float:left"></border><span>
+                   <span style="margin-left:5px">Ages 56 - 75</span>
+                </label>
+                    <ion-item>Patient Name: {{patient.name}}</ion-item>
+                    <ion-item>Age: {{patient.age}}</ion-item>
+                    <ion-item>Date: {{patient.date | date : 'medium'}}</ion-item>
+                    <label class="item item-input">
+                    <span class="input-label">Comments:</span>
+                    <textarea placeholder=""> </textarea>
+                </label>
+                </ion-list>
+                <button class="button" ng-click="print()">Print</button>
+            </div>
         </form>
-        <div d3-bars id="graph" result-edata="result"></div>
     </ion-content>
 </ion-view>
