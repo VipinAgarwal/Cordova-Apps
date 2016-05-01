@@ -1,11 +1,301 @@
 <ion-view title="Select Condition">
     <ion-content padding="true" class="has-header">
-        <form class="list">
-            <ion-checkbox>Left</ion-checkbox>
-            <ion-checkbox>Left Glare</ion-checkbox>
-            <ion-checkbox>Right</ion-checkbox>
-            <ion-checkbox>Right Glare</ion-checkbox>
+        <form class="list" novalidate="" name="eTestResultForm">
+            <div class="row row-top">
+
+                <div class="col col-25 text-center">Left</div>
+                <div class="col col-25 text-center">Left Glare</div>
+                <div class="col col-25 text-center">Right</div>
+                <div class="col col-25 text-center">Right Glare</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-25">
+                    <label class="item item-input">
+                  <div class="input-label">
+                        A:
+                    </div>
+                     <select name="LA" ng-model="LA" ng-change="updateGraph(eTestResultForm)">
+                        <option value="" selected>-</option>
+                        <option>A</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        B:
+                    </div>
+                     <select name="LB" ng-model="LB" ng-change="updateGraph(eTestResultForm)">
+                       <option value="" selected>-</option>
+                        <option>B</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        C:
+                    </div>
+                     <select name="LC" ng-model="LC" ng-change="updateGraph(eTestResultForm)">
+                        <option value="" selected>-</option>
+                        <option>C</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        
+                    </select>
+                </label>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        D:
+                    </div>
+                     <select name="LD" ng-model="LD" ng-change="updateGraph(eTestResultForm)">
+                         <option value="" selected>-</option>
+                        <option>D</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+                </div>
+                <div class="col col-25">
+                    <label class="item item-input">
+                  <div class="input-label">
+                        A:
+                    </div>
+                     <select name="LGA" ng-model="LGA" ng-change="updateGraph(eTestResultForm)">
+                           <option value="" selected>-</option>
+                        <option>A</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        B:
+                    </div>
+                     <select name="LGB" ng-model="LGB" ng-change="updateGraph(eTestResultForm)">
+                           <option value="" selected>-</option>
+                        <option>B</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        C:
+                    </div>
+                     <select name="LGC" ng-model="LGC" ng-change="updateGraph(eTestResultForm)">
+                            <option value="" selected>-</option>
+                        <option>C</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        
+                    </select>
+                </label>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        D:
+                    </div>
+                     <select name="LGD" ng-model="LGD" ng-change="updateGraph(eTestResultForm)">
+                             <option value="" selected>-</option>
+                        <option>D</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+                </div>
+                <div class="col col-25">
+                    <label class="item item-input">
+                  <div class="input-label">
+                        A:
+                    </div>
+                     <select name="RA" ng-model="RA" ng-change="updateGraph(eTestResultForm)">
+                            <option value="" selected>-</option>
+                        <option>A</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        B:
+                    </div>
+                     <select name="RB" ng-model="RB" ng-change="updateGraph(eTestResultForm)">
+                            <option value="" selected>-</option>
+                        <option>B</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        C:
+                    </div>
+                     <select name="RC" ng-model="RC" ng-change="updateGraph(eTestResultForm)">
+                            <option value="" selected>-</option>
+                        <option>C</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        
+                    </select>
+                </label>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        D:
+                    </div>
+                     <select name="RD" ng-model="RD" ng-change="updateGraph(eTestResultForm)">
+                             <option value="" selected>-</option>
+                        <option>D</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+                </div>
+                <div class="col col-25">
+                    <label class="item item-input">
+                  <div class="input-label">
+                        A:
+                    </div>
+                     <select name="RGA" ng-model="RGA" ng-change="updateGraph(eTestResultForm)">
+                            <option value="" selected>-</option>
+                        <option>A</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        B:
+                    </div>
+                     <select name="RGB" ng-model="RGB" ng-change="updateGraph(eTestResultForm)">
+                           <option value="" selected>-</option>
+                        <option>B</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        C:
+                    </div>
+                     <select name="RGC" ng-model="RGC" ng-change="updateGraph(eTestResultForm)">
+                            <option value="" selected>-</option>
+                        <option>C</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        
+                    </select>
+                </label>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        D:
+                    </div>
+                     <select name="RGD" ng-model="RGD" ng-change="updateGraph(eTestResultForm)">
+                            <option value="" selected>-</option>
+                        <option>D</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+                </div>
+            </div>
         </form>
-        <a href="#/etest" class="button button-full button-positive ">Start Test</a>
+        <div d3-bars id="graph" result-edata="result"></div>
     </ion-content>
 </ion-view>

@@ -6,12 +6,13 @@
 
             <div class="list">
 
-                <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.username.$invalid, 'no-errors' : authorizationForm.username.$valid}">
+                <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.username.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.username.$valid && authorizationForm.$submitted}">
                     <span class="input-label">User name:</span>
                     <input type="text" name="username" ng-model="authorization.username" ng-minlength="5" ng-maxlength="20" required>
                 </label>
 
-                <div class="error-container" ng-messages-include="error-messages" ng-show="authorizationForm.username.$error" ng-messages="authorizationForm.username.$error">
+                <div class="error-container" ng-messages-include="error-messages" ng-show="authorizationForm.username.$error && authorizationForm.$submitted"
+                 ng-messages="authorizationForm.username.$error">
                 </div>
 
                 <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.password.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.password.$valid  && authorizationForm.$submitted}">

@@ -32,7 +32,8 @@ angular.module('app.directives', [])
 
             var svg = d3.select(ele[0])
               .append('svg')
-              .style('width', '100%');
+              .style('width', '100%')
+              .style('position', 'absolute');
 
             $window.onresize = function () {
               scope.$apply();
@@ -50,6 +51,12 @@ angular.module('app.directives', [])
               { x: 18, y: 1.55 }
             ];
 
+            basePoints = [
+              { x: 3, y: 0.7, l: "A" },
+              { x: 6, y: 0.91, l: "B" },
+              { x: 12, y: 0.61, l: "C" },
+              { x: 18, y: 0.17, l: "D" }
+            ];
             scope.d1 = [
               { x: 3, y: 2.08 },
               { x: 6, y: 2.29 },
@@ -84,7 +91,7 @@ angular.module('app.directives', [])
               scope.render(scope.data);
             });
 
-            scope.$watch('data', function (newData) {
+            scope.$watch('resultData', function (newData) {
               scope.render(newData);
             }, true);
 
@@ -130,6 +137,7 @@ angular.module('app.directives', [])
                   .ticks(10, ",.2s")
                   .tickValues(ticks);
 
+
                 scope.Areadata = [
                   { x: 3, y: 2.08 },
                   { x: 6, y: 2.29 },
@@ -142,11 +150,11 @@ angular.module('app.directives', [])
                   .y1(function (d) { return y(d.y); });
 
 
-               
-                  
+
+
                 svg.append('path')
-                .style("stroke", "#A9E2F3")
-                  
+                  .style("stroke", "#A9E2F3")
+
                   .style("stroke-width", "1")
                   .style("fill", "#A9E2F3")
                   .style('opacity', 0.2)
@@ -177,6 +185,26 @@ angular.module('app.directives', [])
                   .attr("height", h + m[0] + m[2])
                   .append('g')
                   .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+
+                svg.selectAll(".basesC")
+                  .data(basePoints)
+                  .enter().append("circle")
+                  .attr("class", "basesC")
+                  .attr("r", 10)
+                  .attr('cx', function (d) { return x(d.x) + 4; })
+                  .attr("cy", function (d) { return y(d.y) - 4; })
+                  .style("stroke", "black")
+                  .style("fill", "none");
+
+                svg.selectAll(".bases")
+                  .data(basePoints)
+                  .enter().append("text")
+                  .attr("class", "bases")
+                  .attr('x', function (d) { return x(d.x); })
+                  .attr("y", function (d) { return y(d.y); })
+                  .text(function (d) { return d.l });
+
+
 
                 svg.append('line')
                   .attr("y1", y(0))
@@ -229,26 +257,12 @@ angular.module('app.directives', [])
                   .style("stroke-width", "1")
                   .call(xAxis);
 
-                svg.append('g')
-                  .attr("class", "y axis")
-                  .attr("transform", "translate(25,10)")
-                  .style("stroke", "black")
-                  .style("fill", "none")
-                  .style("stroke-width", "1")
-                  .call(yAxisLeft);
-                
 
 
 
 
-                svg.selectAll(".dot")
-                  .data(A)
-                  .enter().append("circle")
-                  .attr("class", "dot")
-                  .attr("r", 3.5)
-                  .attr('cx', function (d, i) { return x(3); })
-                  .attr("cy", function (d) { return y(d); })
-                  .style("fill", "red");
+
+
 
                 svg.selectAll(".dodo")
                   .data(A)
@@ -263,14 +277,14 @@ angular.module('app.directives', [])
 
 
 
-                svg.selectAll(".dotB")
-                  .data(B)
-                  .enter().append("circle")
-                  .attr("class", "dotB")
-                  .attr("r", 3.5)
-                  .attr('cx', function (d, i) { return x(6); })
-                  .attr("cy", function (d) { return y(d); })
-                  .style("fill", "red");
+                // svg.selectAll(".dotB")
+                //   .data(B)
+                //   .enter().append("circle")
+                //   .attr("class", "dotB")
+                //   .attr("r", 3.5)
+                //   .attr('cx', function (d, i) { return x(6); })
+                //   .attr("cy", function (d) { return y(d); })
+                //   .style("fill", "red");
 
                 svg.selectAll(".dodoB")
                   .data(B)
@@ -282,14 +296,7 @@ angular.module('app.directives', [])
                   .attr("dy", ".35em")
                   .text(function (d, i) { return i + 1 });
 
-                svg.selectAll(".dotC")
-                  .data(C)
-                  .enter().append("circle")
-                  .attr("class", "dotC")
-                  .attr("r", 3.5)
-                  .attr('cx', function (d, i) { return x(12); })
-                  .attr("cy", function (d) { return y(d); })
-                  .style("fill", "red");
+
 
                 svg.selectAll(".dodoC")
                   .data(C)
@@ -300,14 +307,7 @@ angular.module('app.directives', [])
                   .attr("dx", ".71em")
                   .attr("dy", ".35em")
                   .text(function (d, i) { return i + 1 });
-                svg.selectAll(".dotD")
-                  .data(D)
-                  .enter().append("circle")
-                  .attr("class", "dotD")
-                  .attr("r", 3.5)
-                  .attr('cx', function (d, i) { return x(18); })
-                  .attr("cy", function (d) { return y(d); })
-                  .style("fill", "red");
+
 
                 svg.selectAll(".dodoD")
                   .data(D)
@@ -320,11 +320,56 @@ angular.module('app.directives', [])
                   .text(function (d, i) { return i + 1 });
 
 
-                  svg.append('path')
-                  .style("stroke", "black")
+                svg.append('path')
+                  .style("stroke", "blue")
                   .style("fill", "none")
-                  .style("stroke-width", "3")
-                  .attr('d', line(results));
+                  .style("stroke-width", "1")
+                  .attr('d', line(results.L));
+
+                svg.selectAll(".path")
+                  .data(results.L)
+                  .enter().append("path")
+                  .attr("transform", function (d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; })
+                  .attr("d", d3.svg.symbol().type("cross"));
+
+                svg.append('path')
+                  .style("stroke", "blue")
+                  .style("stroke-dasharray", ("3, 7"))
+                  .style("fill", "none")
+                  .style("stroke-width", "1")
+                  .attr('d', line(results.LG));
+
+                svg.selectAll(".path")
+                  .data(results.LG)
+                  .enter().append("path")
+                  .attr("transform", function (d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; })
+                  .attr("d", d3.svg.symbol().type("cross"));
+
+                svg.append('path')
+                  .style("stroke", "black")
+
+                  .style("fill", "none")
+                  .style("stroke-width", "1")
+                  .attr('d', line(results.R));
+
+                svg.selectAll(".path")
+                  .data(results.R)
+                  .enter().append("path")
+                  .attr("transform", function (d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; })
+                  .attr("d", d3.svg.symbol().type("triangle-down"));
+
+                svg.append('path')
+                  .style("stroke", "black")
+                  .style("stroke-dasharray", ("3, 7"))
+                  .style("fill", "none")
+                  .style("stroke-width", "1")
+                  .attr('d', line(results.RG));
+
+                svg.selectAll(".path")
+                  .data(results.RG)
+                  .enter().append("path")
+                  .attr("transform", function (d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; })
+                  .attr("d", d3.svg.symbol().type("triangle-down"));
 
               }, 200);
             };
