@@ -36,6 +36,9 @@ angular.module('app.controllers', [])
             if (event.target.id == "e" || event.target.id == "echar1") {
                 $state.go('selectCondition');
             }
+            else {
+                $state.go('selectConditionForS');
+            }
         }
 
     })
@@ -45,6 +48,10 @@ angular.module('app.controllers', [])
             $state.go('login');
         }
 
+    })
+    
+    .controller('selectConditionForSCtrl', function($scope, $state){
+        
     })
 
     .controller('selectConditionCtrl', function ($scope) {

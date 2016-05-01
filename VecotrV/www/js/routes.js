@@ -50,7 +50,11 @@ angular.module('app.routes', [])
                 controller: 'selectConditionCtrl'
             })
 
-
+            .state('selectConditionForS', {
+                url: '/selectConditionForS',
+                templateUrl: 'templates/selectConditionForS.html',
+                controller: 'selectConditionForSCtrl'
+            })
 
 
 
@@ -71,7 +75,7 @@ angular.module('app.routes', [])
                 controller: 'egraphCntrl'
             })
 
-        ;
+            ;
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/home');
