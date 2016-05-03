@@ -1,7 +1,7 @@
 
 angular.module('app.directives')
 
- 
+
   .directive('d3Barsfors', ['$window', '$timeout', 'd3Service',
     function ($window, $timeout, d3Service) {
       return {
@@ -48,31 +48,28 @@ angular.module('app.directives')
               { x: 12, y: 0.61, l: "C" }
             ];
             scope.d1 = [
-              { x: 3, y: 2.08 },
-              { x: 6, y: 2.29 },
-              { x: 12, y: 1.99 },
-              { x: 15, y: 1.80 }
+              { x: 3, y: 1.80 },
+              { x: 6, y: 2.10 },
+              { x: 12, y: 1.78 },
+              { x: 15, y: 1.34 }
             ];
-
             scope.d2 = [
               { x: 3, y: 1.78 },
               { x: 6, y: 1.99 },
               { x: 12, y: 1.69 },
               { x: 15, y: 1.45 }
             ];
-
             scope.d3 = [
               { x: 3, y: 1.63 },
               { x: 6, y: 1.84 },
               { x: 12, y: 1.54 },
               { x: 15, y: 1.3 }
             ];
-
             scope.d4 = [
-              { x: 3, y: 1.34 },
-              { x: 6, y: 1.55 },
+              { x: 3, y: 1.36 },
+              { x: 6, y: 1.58 },
               { x: 12, y: 1.25 },
-              { x: 15, y: .89 }
+              { x: 15, y: .81 }
             ];
 
             scope.$watch(function () {
@@ -114,10 +111,10 @@ angular.module('app.directives')
                     })])
                     .range([0, w]);
                 ticks = xScale.ticks();
-                
+
                 ticks.push(6);
                 ticks.push(12);
-                
+
 
                 var y = d3.scale.linear().domain([0, 2.5]).range([h, 0]);
                 var yAxisLeft = d3.svg.axis().scale(y).ticks(3).orient("left");
@@ -126,6 +123,8 @@ angular.module('app.directives')
                   .orient("bottom")
                   .ticks(10, ",.2s")
                   .tickValues(ticks);
+
+
 
 
                 scope.Areadata = [
@@ -151,18 +150,18 @@ angular.module('app.directives')
                   .attr("stroke-width", 0)
                   .attr('d', area(scope.d1));
 
-                    // svg.append('path')
+                // svg.append('path')
 
-                    //   .style("fill", "#58D3F7")
-                    //   .style('opacity', 0.2)
-                    //   .attr("stroke-width", 0)
-                    //   .attr('d', area(scope.d2));
+                //   .style("fill", "#58D3F7")
+                //   .style('opacity', 0.2)
+                //   .attr("stroke-width", 0)
+                //   .attr('d', area(scope.d2));
 
-                    // svg.append('path')
-                    //   .style("fill", "#A9BCF5")
-                    //   .style('opacity', 0.2)
-                    //   .attr("stroke-width", 0)
-                    //   .attr('d', area(scope.d3));
+                // svg.append('path')
+                //   .style("fill", "#A9BCF5")
+                //   .style('opacity', 0.2)
+                //   .attr("stroke-width", 0)
+                //   .attr('d', area(scope.d3));
 
                 svg.append('path')
                   .style("fill", "white")
@@ -196,7 +195,7 @@ angular.module('app.directives')
 
 
 
-               
+
 
                 svg.append('line')
                   .attr("y1", y(0))
@@ -214,7 +213,7 @@ angular.module('app.directives')
                   .attr("stroke", "steelblue")
                   .attr("stroke-width", "1");
 
-               
+
 
                 svg.append("rect")
                   .attr("x", 0)
@@ -315,7 +314,7 @@ angular.module('app.directives')
         }
       }
     }])
-     .directive('d3Barsforsglare', ['$window', '$timeout', 'd3Service',
+  .directive('d3Barsforsglare', ['$window', '$timeout', 'd3Service',
     function ($window, $timeout, d3Service) {
       return {
         restrict: 'A',
@@ -427,10 +426,10 @@ angular.module('app.directives')
                     })])
                     .range([0, w]);
                 ticks = xScale.ticks();
-                
+
                 ticks.push(6);
                 ticks.push(12);
-                
+
 
                 var y = d3.scale.linear().domain([0, 2.5]).range([h, 0]);
                 var yAxisLeft = d3.svg.axis().scale(y).ticks(3).orient("left");
@@ -509,7 +508,7 @@ angular.module('app.directives')
 
 
 
-               
+
 
                 svg.append('line')
                   .attr("y1", y(0))
@@ -527,7 +526,7 @@ angular.module('app.directives')
                   .attr("stroke", "steelblue")
                   .attr("stroke-width", "1");
 
-               
+
 
                 svg.append("rect")
                   .attr("x", 0)

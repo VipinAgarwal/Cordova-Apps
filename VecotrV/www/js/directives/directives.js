@@ -334,7 +334,7 @@ angular.module('app.directives', [])
                   .data(results.LG)
                   .enter().append("path")
                   .attr("transform", function (d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; })
-                  .attr("d", d3.svg.symbol().type("cross"));
+                  .attr("d", d3.svg.symbol().type("triangle-down"));
 
                 svg.append('path')
                   .style("stroke", "black")
@@ -347,7 +347,7 @@ angular.module('app.directives', [])
                   .data(results.R)
                   .enter().append("path")
                   .attr("transform", function (d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; })
-                  .attr("d", d3.svg.symbol().type("triangle-down"));
+                  .attr("d", d3.svg.symbol().type("cross"));
 
                 svg.append('path')
                   .style("stroke", "black")

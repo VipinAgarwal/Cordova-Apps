@@ -30,7 +30,10 @@ app.controller('selectConditionSCharCtrl', function ($scope, $cordovaPrinter) {
 
     var computeValueBasedOnPrevious = function (b, c) {
 
-        if (b != 0 && c == 0) {
+        if (b == 0 && c == 0) {
+            return [];
+        }
+        else if (b != 0 && c == 0) {
             return [{ x: 6, y: B[b] }];
         }
         else if (b == 0 && c != 0) {
@@ -38,7 +41,7 @@ app.controller('selectConditionSCharCtrl', function ($scope, $cordovaPrinter) {
         }
 
         else {
-            return [ { x: 6, y: B[b] }, { x: 12, y: C[c] }];
+            return [{ x: 6, y: B[b] }, { x: 12, y: C[c] }];
         }
     }
     $scope.updateGraph = function (form) {
