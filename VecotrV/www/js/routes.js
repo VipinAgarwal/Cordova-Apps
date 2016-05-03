@@ -53,7 +53,7 @@ angular.module('app.routes', [])
             .state('selectConditionForS', {
                 url: '/selectConditionForS',
                 templateUrl: 'templates/selectConditionForS.html',
-                controller: 'selectConditionForSCtrl'
+                controller: 'selectConditionSCharCtrl'
             })
             .state('selectConditionForSChar', {
                 url: '/selectConditionForSChar',

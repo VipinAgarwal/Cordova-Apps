@@ -22,6 +22,29 @@
             }
             else return Number(value) + 1;
         };
+        
+        var computeValueBasedOnPrevious = function(a,b,c,d){
+            if(a!= 0 && b== 0 && c== 0 && d ==0)
+            {
+                return [{ x: 3, y: A[a] }];
+            }
+            else if (a== 0 && b!= 0 && c== 0 && d ==0)
+             {
+                return [{ x: 6, y: B[b] }];
+            }
+            else if (a== 0 && b== 0 && c!= 0 && d ==0)
+             {
+                return [{ x: 12, y: C[c] }];
+            }
+            else if (a== 0 && b== 0 && c== 0 && d !=0)
+             {
+                return [{ x: 18, y: D[d] }];
+            }
+            else
+            {
+              return [{ x: 3, y: A[a] }, { x: 6, y: B[b] }, { x: 12, y: C[c] }, { x: 18, y: D[d] }];   
+            }
+        }
 
         $scope.updateGraph = function (form) {
             // $scope.$parent.patient.etestResults = {};
@@ -30,22 +53,23 @@
             eresult.B = getValuefromDropDown(form.LB.$modelValue);
             eresult.C = getValuefromDropDown(form.LC.$modelValue);
             eresult.D = getValuefromDropDown(form.LD.$modelValue);
-            $scope.result.L = [{ x: 3, y: A[eresult.A] }, { x: 6, y: B[eresult.B] }, { x: 12, y: C[eresult.C] }, { x: 18, y: D[eresult.D] }];
+            
+            $scope.result.L = computeValueBasedOnPrevious(eresult.A, eresult.B, eresult.C,eresult.D);
             eresult.A = getValuefromDropDown(form.LGA.$modelValue);
             eresult.B = getValuefromDropDown(form.LGB.$modelValue);
             eresult.C = getValuefromDropDown(form.LGC.$modelValue);
             eresult.D = getValuefromDropDown(form.LGD.$modelValue);
-            $scope.result.LG = [{ x: 3, y: A[eresult.A] }, { x: 6, y: B[eresult.B] }, { x: 12, y: C[eresult.C] }, { x: 18, y: D[eresult.D] }];
+            $scope.result.LG = computeValueBasedOnPrevious(eresult.A, eresult.B, eresult.C,eresult.D);
             eresult.A = getValuefromDropDown(form.RA.$modelValue);
             eresult.B = getValuefromDropDown(form.RB.$modelValue);
             eresult.C = getValuefromDropDown(form.RC.$modelValue);
             eresult.D = getValuefromDropDown(form.RD.$modelValue);
-            $scope.result.R = [{ x: 3, y: A[eresult.A] }, { x: 6, y: B[eresult.B] }, { x: 12, y: C[eresult.C] }, { x: 18, y: D[eresult.D] }];
+            $scope.result.R = computeValueBasedOnPrevious(eresult.A, eresult.B, eresult.C,eresult.D);
             eresult.A = getValuefromDropDown(form.RGA.$modelValue);
             eresult.B = getValuefromDropDown(form.RGB.$modelValue);
             eresult.C = getValuefromDropDown(form.RGC.$modelValue);
             eresult.D = getValuefromDropDown(form.RGD.$modelValue);
-            $scope.result.RG = [{ x: 3, y: A[eresult.A] }, { x: 6, y: B[eresult.B] }, { x: 12, y: C[eresult.C] }, { x: 18, y: D[eresult.D] }];
+            $scope.result.RG = computeValueBasedOnPrevious(eresult.A, eresult.B, eresult.C,eresult.D);
            
             function calculateAge(birthday) { // birthday is a date
             var ageDifMs = Date.now() - birthday.getTime();

@@ -286,7 +286,7 @@
                   <div class="input-label">
                         C:
                     </div>
-                     <select name="RGCG" ng-model="RGC" ng-change="updateGraph(eTestResultForm)">
+                     <select name="RGC" ng-model="RGC" ng-change="updateGraph(eTestResultForm)">
                         <option value="" selected>-</option>
                         <option>C</option>
                         <option>1</option>
@@ -315,7 +315,9 @@
                 </label>
                 </div>
             </div>
+             <div d3-barsfors id="graph1" result-Edata="result"></div>
         </form>
-        <div d3-bars id="graph" result-edata="result"></div>
+       
+        <!--<div d3-barsforsglare id="graph" result-edata="result"></div>-->
     </ion-content>
 </ion-view>

@@ -87,6 +87,18 @@ angular.module('app.controllers', [])
                 $state.go('searchForPatient');
             }
         };
+        $scope.DemoMode = function(){
+            $scope.$parent.patient = {};
+                $scope.$parent.patient = {
+                    fName: 'Demo',
+                    lName: 'Demo',
+                    gender: 'male',
+                    dob: '12/01/2011',
+                    mrn: '12345'
+                };
+            
+            $state.go('selectTest');
+        }
 
     })
     // .controller('eTestCtrl', function ($scope, $state) {

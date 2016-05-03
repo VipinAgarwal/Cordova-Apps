@@ -1,15 +1,6 @@
 angular.module('app.directives', [])
 
-  .directive('tristateButton', [function () {
-
-    return {
-      scope: {
-        row: '=info'
-      },
-      templateUrl: 'templates/tristatebutton.html'
-    };
-
-  }])
+ 
   .directive('d3Bars', ['$window', '$timeout', 'd3Service',
     function ($window, $timeout, d3Service) {
       return {
@@ -323,7 +314,7 @@ angular.module('app.directives', [])
                 svg.append('path')
                   .style("stroke", "blue")
                   .style("fill", "none")
-                  .style("stroke-width", "1")
+                  .style("stroke-width", "4")
                   .attr('d', line(results.L));
 
                 svg.selectAll(".path")
@@ -336,7 +327,7 @@ angular.module('app.directives', [])
                   .style("stroke", "blue")
                   .style("stroke-dasharray", ("3, 7"))
                   .style("fill", "none")
-                  .style("stroke-width", "1")
+                  .style("stroke-width", "4")
                   .attr('d', line(results.LG));
 
                 svg.selectAll(".path")
@@ -349,7 +340,7 @@ angular.module('app.directives', [])
                   .style("stroke", "black")
 
                   .style("fill", "none")
-                  .style("stroke-width", "1")
+                  .style("stroke-width", "4")
                   .attr('d', line(results.R));
 
                 svg.selectAll(".path")
@@ -362,7 +353,7 @@ angular.module('app.directives', [])
                   .style("stroke", "black")
                   .style("stroke-dasharray", ("3, 7"))
                   .style("fill", "none")
-                  .style("stroke-width", "1")
+                  .style("stroke-width", "4")
                   .attr('d', line(results.RG));
 
                 svg.selectAll(".path")
