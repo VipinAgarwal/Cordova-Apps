@@ -10,7 +10,13 @@ app.controller('selectConditionSCharCtrl', function ($scope, $cordovaPrinter) {
     $scope.result = {
         L: { A: {}, B: {}, C: {}, D: {} },
         LG: { A: {}, B: {}, C: {}, D: {} },
-        R: { A: {}, B: {}, C: {}, D: {} },
+        R: { A: {}, B: {}, C: {}, D: {} }, 
+        RG: { A: {}, B: {}, C: {}, D: {} }
+    };
+     $scope.result1 = {
+         L: { A: {}, B: {}, C: {}, D: {} },
+        LG: { A: {}, B: {}, C: {}, D: {} },
+        R: { A: {}, B: {}, C: {}, D: {} }, 
         RG: { A: {}, B: {}, C: {}, D: {} }
     };
     var getValuefromDropDown = function (value) {
@@ -52,13 +58,13 @@ app.controller('selectConditionSCharCtrl', function ($scope, $cordovaPrinter) {
         $scope.result.L = computeValueBasedOnPrevious(eresult.B, eresult.C);
         eresult.B = getValuefromDropDown(form.LGB.$modelValue);
         eresult.C = getValuefromDropDown(form.LGC.$modelValue);
-        $scope.result.LG = computeValueBasedOnPrevious(eresult.B, eresult.C);
+        $scope.result1.LG = computeValueBasedOnPrevious(eresult.B, eresult.C);
         eresult.B = getValuefromDropDown(form.RB.$modelValue);
         eresult.C = getValuefromDropDown(form.RC.$modelValue);
         $scope.result.R = computeValueBasedOnPrevious(eresult.B, eresult.C);
         eresult.B = getValuefromDropDown(form.RGB.$modelValue);
         eresult.C = getValuefromDropDown(form.RGC.$modelValue);
-        $scope.result.RG = computeValueBasedOnPrevious(eresult.B, eresult.C);
+        $scope.result1.RG = computeValueBasedOnPrevious(eresult.B, eresult.C);
 
 
     };

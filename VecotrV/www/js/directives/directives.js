@@ -98,14 +98,11 @@ angular.module('app.directives', [])
                 var w = d3.select(ele[0])[0][0].offsetWidth - m[0]; // width
                 //var h = d3.select(ele[0])[0][0].offsetHeight - m[0]; // height
 
-                var h = 750;
+                var h = 650;
                 var line = d3.svg.line()
                   .x(function (d) { return x(d.x); })
                   .y(function (d) { return y(d.y); });
 
-                var width = d3.select(ele[0])[0][0].offsetWidth - margin,
-                  height = scope.data.length * (barHeight + barPadding),
-                  color = d3.scale.category20();
                 var x = d3.scale.log()
                   .domain([2.5, 20])
                   .range([0, w]),
@@ -142,6 +139,11 @@ angular.module('app.directives', [])
 
 
 
+    var graph = svg
+                  .attr("width", w + m[1] + m[1])
+                  .attr("height", h + m[1] + m[2])
+                  .append('g')
+                  .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
                 svg.append('path')
                   .style("stroke", "#A9E2F3")
@@ -171,12 +173,7 @@ angular.module('app.directives', [])
                   .attr("stroke-width", 0)
                   .attr('d', area(scope.d4));
 
-                var graph = svg
-                  .attr("width", w + m[1] + m[3])
-                  .attr("height", h + m[0] + m[2])
-                  .append('g')
-                  .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
-
+            
                 svg.selectAll(".basesC")
                   .data(basePoints)
                   .enter().append("circle")
@@ -242,7 +239,7 @@ angular.module('app.directives', [])
 
                 svg.append('g')
                   .attr("class", "x axis")
-                  .attr("transform", "translate(10,820)")
+                  .attr("transform", "translate(10,700)")
                   .style("stroke", "black")
                   .style("fill", "none")
                   .style("stroke-width", "1")

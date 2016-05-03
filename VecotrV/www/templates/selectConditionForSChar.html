@@ -3,8 +3,8 @@
         <form class="list" novalidate="" name="eTestResultForm">
             <div class="row row-top">
                 <div class="col col-25 text-center">Left</div>
-                <div class="col col-25 text-center">Left Glare</div>
                 <div class="col col-25 text-center">Right</div>
+                <div class="col col-25 text-center">Left Glare</div>
                 <div class="col col-25 text-center">Right Glare</div>
             </div>
 
@@ -12,7 +12,7 @@
                 <div class="col col-25">
                     <div class="row">
                         <div class="col col-70">
-                     <select name="LA" ng-model="LA" ng-change="updateGraph(eTestResultForm)">
+                            <select name="LA" ng-model="LA" ng-change="updateGraph(eTestResultForm)">
                         <option value="" selected>-</option>
                         <option>0.1</option>
                         <option>0.2</option>
@@ -88,83 +88,7 @@
                 <div class="col col-25">
                     <div class="row">
                         <div class="col col-70">
-                     <select name="LGA" ng-model="LGA" ng-change="updateGraph(eTestResultForm)">
-                         <option value="" selected>-</option>
-                        <option>0.1</option>
-                        <option>0.2</option>
-                        <option>0.3</option>
-                        <option>0.4</option>
-                        <option>0.5</option>
-                        <option>0.6</option>
-                        <option>0.7</option>
-                        <option>0.8</option>
-                        <option>0.9</option>
-                        <option>1</option>
-                        <option>1.2</option>
-                        <option>1.5</option>
-                    </select>
-                        </div>
-                        <div class="col col-30">
-                            <select name="LGAG" ng-model="LGAG" ng-change="updateGraph(eTestResultForm)">
-                        <option value="" selected>-</option>
-                        <option>-1</option>
-                    </select>
-
-                        </div>
-                    </div>
-                    <label class="item item-input">
-                  <div class="input-label">
-                        B:
-                    </div>
-                     <select name="LGB" ng-model="LGB" ng-change="updateGraph(eTestResultForm)">
-                       <option value="" selected>-</option>
-                        <option>B</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                    </select>
-                </label>
-                    <label class="item item-input">
-                  <div class="input-label">
-                        C:
-                    </div>
-                     <select name="LGC" ng-model="LGC" ng-change="updateGraph(eTestResultForm)">
-                        <option value="" selected>-</option>
-                        <option>C</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        
-                    </select>
-                </label>
-                    <label class="item item-input">
-                  <div class="input-label">
-                        
-                    </div>
-                     <select name="LGD" ng-model="LGD" ng-change="updateGraph(eTestResultForm)">
-                         <option value="" selected>-</option>
-                        <option>100%</option>
-                        <option>40%</option>
-                        <option>20%</option>
-                        <option>10%</option>
-                        <option>5%</option>
-                    </select>
-                </label>
-                </div>
-                <div class="col col-25">
-                    <div class="row">
-                        <div class="col col-70">
-                     <select name="RA" ng-model="RA" ng-change="updateGraph(eTestResultForm)">
+                            <select name="RA" ng-model="RA" ng-change="updateGraph(eTestResultForm)">
                         <option value="" selected>-</option>
                         <option>0.1</option>
                         <option>0.2</option>
@@ -240,7 +164,84 @@
                 <div class="col col-25">
                     <div class="row">
                         <div class="col col-70">
-                     <select name="RGA" ng-model="RGA" ng-change="updateGraph(eTestResultForm)">
+                            <select name="LGA" ng-model="LGA" ng-change="updateGraph(eTestResultForm)">
+                         <option value="" selected>-</option>
+                        <option>0.1</option>
+                        <option>0.2</option>
+                        <option>0.3</option>
+                        <option>0.4</option>
+                        <option>0.5</option>
+                        <option>0.6</option>
+                        <option>0.7</option>
+                        <option>0.8</option>
+                        <option>0.9</option>
+                        <option>1</option>
+                        <option>1.2</option>
+                        <option>1.5</option>
+                    </select>
+                        </div>
+                        <div class="col col-30">
+                            <select name="LGAG" ng-model="LGAG" ng-change="updateGraph(eTestResultForm)">
+                        <option value="" selected>-</option>
+                        <option>-1</option>
+                    </select>
+
+                        </div>
+                    </div>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        B:
+                    </div>
+                     <select name="LGB" ng-model="LGB" ng-change="updateGraph(eTestResultForm)">
+                       <option value="" selected>-</option>
+                        <option>B</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </label>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        C:
+                    </div>
+                     <select name="LGC" ng-model="LGC" ng-change="updateGraph(eTestResultForm)">
+                        <option value="" selected>-</option>
+                        <option>C</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        
+                    </select>
+                </label>
+                    <label class="item item-input">
+                  <div class="input-label">
+                        
+                    </div>
+                     <select name="LGD" ng-model="LGD" ng-change="updateGraph(eTestResultForm)">
+                         <option value="" selected>-</option>
+                        <option>100%</option>
+                        <option>40%</option>
+                        <option>20%</option>
+                        <option>10%</option>
+                        <option>5%</option>
+                    </select>
+                </label>
+                </div>
+
+                <div class="col col-25">
+                    <div class="row">
+                        <div class="col col-70">
+                            <select name="RGA" ng-model="RGA" ng-change="updateGraph(eTestResultForm)">
                         <option value="" selected>-</option>
                         <option>0.1</option>
                         <option>0.2</option>
@@ -285,7 +286,7 @@
                   <div class="input-label">
                         C:
                     </div>
-                     <select name="RGCG" ng-model="RGC" ng-change="updateGraph(eTestResultForm)">
+                     <select name="RGC" ng-model="RGC" ng-change="updateGraph(eTestResultForm)">
                         <option value="" selected>-</option>
                         <option>C</option>
                         <option>1</option>
@@ -314,8 +315,14 @@
                 </label>
                 </div>
             </div>
+            <div class="row">
+                <div class="col col-50">
+                    <div class="container" d3-barsfors id="graph1" result-edata="result"></div>
+                </div>
+                <div class="col col-50">
+                    <div class="container1" d3-barsfors id="graph" result-edata="result1"></div>
+                </div>
+            </div>
         </form>
-        <div d3-barsfors id="graph" result-edata="result"></div>
-        <!--<div d3-barsforsglare id="graph" result-edata="result"></div>-->
     </ion-content>
 </ion-view>
